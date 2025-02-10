@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: azfarself
+  vmImage: AzfarSelf
 
 steps:
 - task: Maven@3
