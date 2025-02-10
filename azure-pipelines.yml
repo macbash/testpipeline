@@ -22,11 +22,12 @@ steps:
     goals: 'package'
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)'
-    Contents: '**/.war'
-    TargetFolder: '$(build.artifactstagingdirectory)'
+    SourceFolder: '/home/azfar/_work/1/s/webapp/target'  # Path to source folder containing webapp.war
+    Contents: 'webapp.war'  # Specific .war file to copy
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/webapp'  # Staging folder for artifacts
+
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
-    ArtifactName: 'warfile'
-    publishLocation: 'Container'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/webapp'  # Location of the copied .war file
+    ArtifactName: 'webapp'  # Name of the artifact
+    publishLocation: 'Container'  # Publish to Azure DevOps build artifacts container
